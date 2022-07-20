@@ -32,14 +32,18 @@ public class Main {
     }
 
     private static void examinationPassword(String password, String confirmPassword) throws WrongPasswordException {
+
         if (password.isEmpty() || password.length() >= 20) {
             throw new WrongPasswordException("Длинна пароля больше, чем требуется !");
         }
         if (!comparisonСharacterSet(password)) {
-            throw new WrongPasswordException("Недопустимый символ в password");
+            throw new WrongPasswordException("Недопустимый символ в пароле !");
+        }
+        if (!comparisonСharacterSet(confirmPassword)) {
+            throw new WrongPasswordException("Недопустимый символ в повторе ввода пароля !");
         }
         if (!password.equals(confirmPassword)) {
-            throw new WrongPasswordException("Пароль  не  подходит !");
+            throw new WrongPasswordException("Пароль и потвержедение не совпадают !");
         }
 
     }
